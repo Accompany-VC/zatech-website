@@ -1,7 +1,11 @@
+import ReportForm from '../components/forms/ReportForm.jsx';
+
 export default function Report() {
   return (
-    <div>
-      <h1>Report Page</h1>
+    <div className="report-page">
+      <div className="container">
+        <ReportForm />
+      </div>
     </div>
   );
 }

@@ -4,14 +4,9 @@ import ReCaptchaProvider from "./components/common/ReCaptchaProvider";
 import Navbar from "./components/common/Navbar";
 import Home from "./pages/Home";
 import Report from "./pages/Report";
-import { SecurityUtils } from "./utils/securityUtils";
 import './App.css'
 
 function App() {
-  // Initialize security monitoring
-  useEffect(() => {
-    SecurityUtils.initCSPMonitoring();
-  }, []);
 
   return (
     <ReCaptchaProvider>

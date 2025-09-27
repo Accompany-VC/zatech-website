@@ -1,53 +1,42 @@
-// Enhanced security utilities with CSP-compliant validation
+// Security utilities for input validation and rate limiting
 import DOMPurify from 'dompurify';
 import { RECAPTCHA_SCORE_THRESHOLD } from '../config/recaptcha.js';
 
 export class SecurityUtils {
   
-  // CSP-compliant input sanitization
+  // Input sanitization using DOMPurify
   static sanitizeInput(input) {
     if (typeof input !== 'string') return input;
     
-    // DOMPurify configuration that works well with CSP
     const config = {
-      ALLOWED_TAGS: [], // No HTML tags allowed
-      ALLOWED_ATTR: [], // No attributes allowed
-      KEEP_CONTENT: true, // Keep text content
-      RETURN_DOM: false, // Return string, not DOM
+      ALLOWED_TAGS: [],
+      ALLOWED_ATTR: [],
+      KEEP_CONTENT: true,
+      RETURN_DOM: false,
       RETURN_DOM_FRAGMENT: false,
-      SANITIZE_DOM: true // Extra DOM sanitization
+      SANITIZE_DOM: true
     };
     
     return DOMPurify.sanitize(input, config).trim();
   }
 
-  // Enhanced pattern detection that works with CSP
+  // Pattern detection for suspicious content
   static containsSuspiciousPatterns(text) {
-    // CSP will block most of these, but we still validate for good practice
     const suspiciousPatterns = [
-      // Script injection attempts
       /<script[^>]*>/i,
       /<\/script>/i,
       /javascript:/i,
       /vbscript:/i,
       /data:text\/html/i,
-      
-      // Event handlers (CSP will block, but we check anyway)
       /on\w+\s*=/i,
       /fscommand/i,
-      
-      // Data exfiltration attempts
       /document\./i,
       /window\./i,
       /eval\s*\(/i,
       /expression\s*\(/i,
-      
-      // Template injection
       /\$\{/,
       /\{\{/,
       /%3Cscript/i,
-      
-      // Protocol violations
       /file:\/\//i,
       /ftp:\/\//i
     ];
@@ -55,31 +44,7 @@ export class SecurityUtils {
     return suspiciousPatterns.some(pattern => pattern.test(text));
   }
 
-  // CSP violation handler
-  static handleCSPViolation(violation) {
-    // Log CSP violations for monitoring
-    console.warn('CSP Violation:', {
-      blockedURI: violation.blockedURI,
-      violatedDirective: violation.violatedDirective,
-      originalPolicy: violation.originalPolicy,
-      sourceFile: violation.sourceFile,
-      lineNumber: violation.lineNumber
-    });
-    
-    // In production, you might want to send this to your monitoring service
-    // Example: sendToMonitoring('csp-violation', violation);
-  }
-
-  // Initialize CSP violation monitoring
-  static initCSPMonitoring() {
-    if (typeof window !== 'undefined') {
-      document.addEventListener('securitypolicyviolation', (e) => {
-        this.handleCSPViolation(e);
-      });
-    }
-  }
-
-  // Validate reCAPTCHA token and score
+  // Validate reCAPTCHA score
   static validateRecaptchaScore(score) {
     if (typeof score !== 'number') {
       return { valid: false, reason: 'Invalid reCAPTCHA score format' };
@@ -140,49 +105,13 @@ export class SecurityUtils {
     };
   }
   
-  // Check for suspicious patterns (CSP provides primary protection)
-  static containsSuspiciousPatterns(text) {
-    // CSP will block most of these, but we still validate for defense in depth
-    const suspiciousPatterns = [
-      // Script injection attempts
-      /<script[^>]*>/i,
-      /<\/script>/i,
-      /javascript:/i,
-      /vbscript:/i,
-      /data:text\/html/i,
-      
-      // Event handlers (CSP will block, but we check anyway)
-      /on\w+\s*=/i,
-      /fscommand/i,
-      
-      // Data exfiltration attempts
-      /document\./i,
-      /window\./i,
-      /eval\s*\(/i,
-      /expression\s*\(/i,
-      
-      // Template injection
-      /\$\{/,
-      /\{\{/,
-      /%3Cscript/i,
-      
-      // Protocol violations
-      /file:\/\//i,
-      /ftp:\/\//i
-    ];
-    
-    return suspiciousPatterns.some(pattern => pattern.test(text));
-  }
-  
-  // Enhanced rate limiting with reCAPTCHA consideration
+  // Rate limiting with reCAPTCHA consideration
   static checkRateLimit(key, maxAttempts = 3, windowMs = 300000, hasValidRecaptcha = false) { 
-    // If reCAPTCHA is valid, allow more attempts
     const adjustedMaxAttempts = hasValidRecaptcha ? maxAttempts * 2 : maxAttempts;
     
     const now = Date.now();
     const attempts = JSON.parse(localStorage.getItem(`rateLimit_${key}`) || '[]');
     
-    // Remove old attempts
     const recentAttempts = attempts.filter(timestamp => now - timestamp < windowMs);
     
     if (recentAttempts.length >= adjustedMaxAttempts) {
@@ -193,7 +122,6 @@ export class SecurityUtils {
       };
     }
     
-    // Record this attempt
     recentAttempts.push(now);
     localStorage.setItem(`rateLimit_${key}`, JSON.stringify(recentAttempts));
     
@@ -203,7 +131,7 @@ export class SecurityUtils {
     };
   }
   
-  // Generate a fingerprint for additional security tracking
+  // Generate security fingerprint
   static generateFingerprint() {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');

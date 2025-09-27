@@ -55,7 +55,6 @@ export const submitReport = async (reportData, recaptchaScore = null) => {
     
     return { success: true, id: docRef.id };
   } catch (error) {
-    console.error('Error submitting report: ', error);
     return { success: false, error: 'Failed to submit report. Please try again.' };
   }
 };
@@ -79,8 +78,7 @@ export const getAllReports = async () => {
     
     return { success: true, reports };
   } catch (error) {
-    console.error('Error fetching reports: ', error);
-    return { success: false, error: error.message };
+    throw error;
   }
 };
 
@@ -104,8 +102,7 @@ export const getReportsByStatus = async (status) => {
     
     return { success: true, reports };
   } catch (error) {
-    console.error('Error fetching reports by status: ', error);
-    return { success: false, error: error.message };
+    throw error;
   }
 };
 
@@ -125,7 +122,6 @@ export const updateReportStatus = async (reportId, newStatus) => {
     
     return { success: true };
   } catch (error) {
-    console.error('Error updating report status: ', error);
     return { success: false, error: error.message };
   }
 };
@@ -154,7 +150,6 @@ export const getReportStats = async () => {
 
     return { success: true, stats };
   } catch (error) {
-    console.error('Error getting report stats: ', error);
     return { success: false, error: error.message };
   }
 };

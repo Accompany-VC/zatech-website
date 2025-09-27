@@ -25,7 +25,6 @@ export class FirestoreService {
         ...doc.data()
       }));
     } catch (error) {
-      console.error('Error getting collection:', error);
       throw error;
     }
   }
@@ -42,7 +41,6 @@ export class FirestoreService {
         throw new Error('Document not found');
       }
     } catch (error) {
-      console.error('Error getting document:', error);
       throw error;
     }
   }
@@ -57,7 +55,6 @@ export class FirestoreService {
       });
       return docRef.id;
     } catch (error) {
-      console.error('Error adding document:', error);
       throw error;
     }
   }
@@ -72,7 +69,6 @@ export class FirestoreService {
       });
       return true;
     } catch (error) {
-      console.error('Error updating document:', error);
       throw error;
     }
   }
@@ -84,7 +80,6 @@ export class FirestoreService {
       await deleteDoc(docRef);
       return true;
     } catch (error) {
-      console.error('Error deleting document:', error);
       throw error;
     }
   }
@@ -115,7 +110,6 @@ export class FirestoreService {
         ...doc.data()
       }));
     } catch (error) {
-      console.error('Error querying documents:', error);
       throw error;
     }
   }

@@ -15,7 +15,6 @@ export class AuthService {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       return userCredential.user;
     } catch (error) {
-      console.error('Error signing in:', error);
       throw error;
     }
   }
@@ -26,7 +25,6 @@ export class AuthService {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       return userCredential.user;
     } catch (error) {
-      console.error('Error signing up:', error);
       throw error;
     }
   }
@@ -37,7 +35,6 @@ export class AuthService {
       await signOut(auth);
       return true;
     } catch (error) {
-      console.error('Error signing out:', error);
       throw error;
     }
   }
@@ -53,7 +50,6 @@ export class AuthService {
       await sendPasswordResetEmail(auth, email);
       return true;
     } catch (error) {
-      console.error('Error sending password reset email:', error);
       throw error;
     }
   }

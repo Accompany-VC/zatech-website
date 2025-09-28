@@ -1,51 +1,29 @@
-// Firestore Security Rules for Anonymous Reporting
-// Deploy these rules to your Firebase project
-
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
-    
-    // Anonymous reports - allow creation only, no reading/updating by clients
     match /anonymous_reports/{reportId} {
-      // Allow anyone to submit a report (create only)
-      allow create: if isValidReport(resource.data) 
-                   && !('userId' in resource.data) // Ensure no user identification
-                   && resource.data.status == 'pending'; // Force initial status
-      
-      // Only authenticated admins can read/update reports
-      allow read, update: if isAuthenticated() && isAdmin();
-      
-      // No one can delete reports (audit trail)
-      allow delete: if false;
+      allow create: if isValidReportData();
+      allow read, update, delete: if isAdmin();
     }
     
-    // Helper functions
-    function isAuthenticated() {
-      return request.auth != null;
-    }
-    
-    function isAdmin() {
-      // You'll need to implement admin role checking
-      // Option 1: Check custom claims
-      return request.auth.token.admin == true;
-      
-      // Option 2: Check against admin collection
-      // return exists(/databases/$(database)/documents/admins/$(request.auth.uid));
-    }
-    
-    function isValidReport(data) {
-      return data.keys().hasAll(['report_type', 'description', 'status', 'created_at'])
-             && data.report_type in ['harassment', 'discrimination', 'inappropriate_content', 'spam', 'violence', 'hate_speech', 'other']
-             && data.description is string
-             && data.description.size() >= 10
-             && data.description.size() <= 1000
-             && data.status == 'pending';
-    }
-    
-    // Deny access to all other collections by default
     match /{document=**} {
       allow read, write: if false;
     }
   }
+}
+
+function isValidReportData() {
+  let data = request.resource.data;
+  return data.keys().hasAll(['report_type', 'description', 'status']) &&
+         data.report_type is string &&
+         data.report_type in ['harassment', 'discrimination', 'inappropriate_content', 
+                             'spam', 'violence', 'hate_speech', 'other'] &&
+         data.description is string &&
+         data.description.size() >= 10 &&
+         data.description.size() <= 1000 &&
+         data.status == 'pending';
+}
+
+function isAdmin() {
+  return request.auth != null && request.auth.token.admin == true;
 }

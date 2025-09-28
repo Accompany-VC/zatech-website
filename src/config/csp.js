@@ -9,22 +9,27 @@ const buildPolicy = () => {
       "'self'",
       "'unsafe-inline'",
       ...(isDev ? ["'unsafe-eval'"] : []),
-      "https://www.google.com/recaptcha/",
-      "https://www.gstatic.com/recaptcha/",
+      "https://www.google.com",
+      "https://www.gstatic.com",
       "https://apis.google.com"
     ],
-    "style-src": ["'self'", "'unsafe-inline'"],
+    "style-src": ["'self'", "'unsafe-inline'", "https://www.gstatic.com"],
     "connect-src": [
       "'self'",
       "https://firestore.googleapis.com",
-      "https://www.google.com/recaptcha/"
+      "https://www.googleapis.com", 
+      "https://www.google.com",
+      "https://identitytoolkit.googleapis.com",
+      "https://securetoken.googleapis.com",
+      "https://zatechdatabase.firebaseapp.com",
+      "https://zatechdatabase.firebasestorage.app"
     ],
     "frame-src": [
-      // Just reCAPTCHA iframe
-      "https://www.google.com/recaptcha/",
-      "https://recaptcha.google.com/recaptcha/",
+      "https://www.google.com",
+      "https://recaptcha.google.com",
       "https://zatechdatabase.firebaseapp.com"
     ],
+    "img-src": ["'self'", "data:", "https://www.gstatic.com"],
     "object-src": ["'none'"],
     "base-uri": ["'self'"],
     "form-action": ["'self'"]

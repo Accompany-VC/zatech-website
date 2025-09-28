@@ -4,12 +4,10 @@ import App from "./App";
 import "./index.css";
 import { getCSP } from "./config/csp.js";
 
-// 🛡️ Set CSP dynamically
 const setCSP = () => {
-  const cspString = getCSP();
   const metaTag = document.createElement('meta');
   metaTag.setAttribute('http-equiv', 'Content-Security-Policy');
-  metaTag.setAttribute('content', cspString);
+  metaTag.setAttribute('content', getCSP());
   document.head.appendChild(metaTag);
 };
 

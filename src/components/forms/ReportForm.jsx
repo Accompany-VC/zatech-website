@@ -1,17 +1,16 @@
 import React, { useState, useCallback } from 'react';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { submitReport, REPORT_TYPES } from '../../services/reportService.js';
 import { SecurityUtils } from '../../utils/securityUtils.js';
+import { useReCaptcha } from '../common/ReCaptchaProvider.jsx';
 
 function ReportForm() {
+  const { executeRecaptcha, recaptchaLoaded } = useReCaptcha();
   const [formData, setFormData] = useState({
     report_type: '',
     description: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState({ type: '', text: '' });
-  
-  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
@@ -34,45 +33,31 @@ function ReportForm() {
     
     try {
       // Execute reCAPTCHA
-      let recaptchaScore = null;
-      if (executeRecaptcha) {
+      let recaptchaToken = null;
+      if (recaptchaLoaded) {
         try {
-          const token = await executeRecaptcha('report_submission');
-          // In production, verify this token on your backend
-          // For now, we simulate a score (backend verification needed)
-          recaptchaScore = 0.9; // Simulated score
-        } catch (recaptchaError) {
+          recaptchaToken = await executeRecaptcha('submit_report');
+        } catch (error) {
           setMessage({
             type: 'error',
-            text: 'Security verification failed. Please refresh the page and try again.'
+            text: 'Bot protection verification failed. Please try again.'
           });
           return;
         }
       }
 
-      // Validate form data with reCAPTCHA score
-      const validation = SecurityUtils.validateReportData(formData, recaptchaScore);
+      // Validate input
+      const validation = SecurityUtils.validateReportData(formData);
       if (!validation.isValid) {
         setMessage({
-          type: 'error',
+          type: 'error', 
           text: validation.errors.join(', ')
         });
         return;
       }
 
-      // Check rate limiting
-      const hasValidRecaptcha = recaptchaScore && recaptchaScore >= 0.5;
-      const rateLimit = SecurityUtils.checkRateLimit('report_submission', 3, 300000, hasValidRecaptcha);
-      if (!rateLimit.allowed) {
-        setMessage({
-          type: 'error',
-          text: `Too many submission attempts. Please wait ${rateLimit.resetTime} seconds before trying again.`
-        });
-        return;
-      }
-
       // Submit the report
-      const result = await submitReport(formData, recaptchaScore);
+      const result = await submitReport(formData, recaptchaToken);
       
       if (result.success) {
         setMessage({
@@ -98,12 +83,10 @@ function ReportForm() {
     } finally {
       setIsSubmitting(false);
     }
-  }, [executeRecaptcha, formData, isSubmitting, message.text]);
+  }, [formData, isSubmitting, recaptchaLoaded, executeRecaptcha]);
 
   return (
     <div className="report-form">
-      <h2>Submit Anonymous Report</h2>
-      <p>Help us maintain a safe and respectful community by reporting inappropriate content or behavior.</p>
       
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -149,11 +132,19 @@ function ReportForm() {
 
         <button 
           type="submit" 
-          disabled={isSubmitting}
+          disabled={isSubmitting || !recaptchaLoaded}
           className="submit-btn"
         >
-          {isSubmitting ? 'Submitting...' : 'Submit Report'}
+          {isSubmitting ? 'Submitting...' : 
+           !recaptchaLoaded ? 'Loading security...' : 
+           'Submit Report'}
         </button>
+        
+        {!recaptchaLoaded && import.meta.env.PROD && (
+          <div className="recaptcha-status">
+            <small>Loading security verification...</small>
+          </div>
+        )}
       </form>
 
       <div className="privacy-notice">

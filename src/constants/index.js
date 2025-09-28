@@ -1,12 +1,8 @@
 // Firebase collection names
 export const FIREBASE_COLLECTIONS = {
-  ANONYMOUS_REPORTS: 'anonymous_reports',
-  USERS: 'users',
-  POSTS: 'posts',
-  // Add more collections as needed
+  ANONYMOUS_REPORTS: 'anonymous_reports'
 };
 
-// We can either keep the dropdown or allow freeform text
 // Report types for anonymous reporting
 export const REPORT_TYPES = {
   HARASSMENT: 'harassment',
@@ -26,9 +22,3 @@ export const REPORT_STATUSES = {
   DISMISSED: 'dismissed'
 };
 
-// App configuration constants
-export const APP_CONFIG = {
-  APP_NAME: 'ZATech Website',
-  VERSION: '1.0.0',
-  // Add more app constants as needed
-};

@@ -12,7 +12,7 @@ export default function Navbar() {
         <Link to="/wiki" className="nav-link">Wiki</Link>
         <Link to="/contact" className="nav-link">Contact</Link>
         <Link to="/sponsorship" className="nav-link">Sponsorship</Link>
-        <Link to="/joinchannel" className="nav-link">Join</Link>
+        <Link to="/#invite-email" className="nav-link nav-link--highlight">Join</Link>
       </div>
     </nav>
   );

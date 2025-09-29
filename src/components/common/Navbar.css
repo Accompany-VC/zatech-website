@@ -35,5 +35,21 @@
 }
 
 .nav-link:hover {
-  color: #0077cc; 
+  color: #0077cc;
+}
+
+.nav-link--highlight {
+  background: #fd7e14;
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 8px 16px rgba(253, 126, 20, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-link--highlight:hover {
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(253, 126, 20, 0.3);
 }

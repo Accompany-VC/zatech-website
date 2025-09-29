@@ -1,8 +1,165 @@
 ## After clone
 ```
+npm install# ZATech Anonymous Reporting System
+
+A secure, anonymous reporting platform built with React and Firebase, featuring enterprise-grade security measures.
+
+## 🛡️ Security Features
+
+- **Content Security Policy (CSP)**: Browser-level protection against XSS attacks
+- **Input Sanitization**: DOMPurify integration with custom validation
+- **Rate Limiting**: Advanced abuse prevention with progressive delays
+- **Bot Protection**: Google reCAPTCHA v3 with score-based validation
+- **Real-time Monitoring**: CSP violation tracking and security alerts
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+- Firebase project with Firestore enabled
+- Google reCAPTCHA v3 site key
+
+### Installation
+```bash
+# Clone the repository
+git clone [your-repo-url]
+cd zatech-website
+
+# Install dependencies
 npm install
+
+# Configure environment variables
+cp .env.example .env.local
+# Edit .env.local with your Firebase and reCAPTCHA credentials
+
+# Start development server
 npm run dev
 ```
+
+### Environment Variables
+Create a `.env.local` file with:
+```env
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=123456789
+VITE_FIREBASE_APP_ID=1:123456789:web:abcdef
+VITE_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
+```
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+│   ├── common/         # Shared components (Navbar, etc.)
+│   └── forms/          # Form-specific components
+├── config/             # Configuration files
+│   ├── firebase.js     # Firebase configuration
+│   ├── recaptcha.js    # reCAPTCHA configuration
+│   └── csp.js          # Simple CSP configuration
+├── pages/              # Page components
+│   ├── Home.jsx        # Landing page
+│   └── Report.jsx      # Report submission page
+├── services/           # Business logic layer
+│   ├── reportService.js    # Report handling
+│   ├── authService.js      # Authentication
+│   └── firestoreService.js # Database operations
+├── utils/              # Utility functions
+│   └── securityUtils.js    # Security validation
+└── constants/          # Application constants
+```
+
+## 🔧 Development
+
+### Security Testing
+```bash
+# The application automatically runs security monitoring in all modes
+npm run dev
+
+# Check browser console for:
+# - CSP violation alerts  
+# - Security monitoring status
+# - Rate limiting status
+```
+
+### Building for Production
+```bash
+# Build optimized production bundle
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## 🛡️ Security Implementation
+
+Our security approach uses multiple layers:
+
+1. **Browser Level**: Content Security Policy prevents unauthorized resource loading
+2. **Application Level**: Input sanitization and validation prevent injection attacks
+3. **Service Level**: Rate limiting prevents abuse and spam
+4. **User Level**: reCAPTCHA distinguishes humans from bots
+5. **Data Level**: Firebase security rules protect data access
+
+For detailed security information, see [SECURITY.md](./SECURITY.md).
+
+## 📊 Features
+
+### Anonymous Reporting
+- **Secure Submission**: End-to-end encrypted report transmission
+- **Input Validation**: Real-time content sanitization
+- **Rate Limiting**: Prevents spam while allowing legitimate reports
+- **Bot Protection**: Invisible reCAPTCHA validation
+
+### Security Monitoring
+- **CSP Violations**: Real-time browser security monitoring
+- **Abuse Detection**: Automated rate limiting enforcement
+- **Development Tools**: Security testing utilities
+
+## 🎯 Best Practices Followed
+
+- ✅ **Defense in Depth**: Multiple security layers
+- ✅ **Principle of Least Privilege**: Minimal resource permissions
+- ✅ **Input Validation**: Client and server-side validation
+- ✅ **Secure Configuration**: Environment-based secrets
+- ✅ **Real-time Monitoring**: Security violation tracking
+
+## 📈 Performance
+
+- **Bundle Size**: Optimized with Vite tree-shaking
+- **Load Time**: Fast initial page load with code splitting
+- **Security Overhead**: Minimal impact on user experience
+- **Scalability**: Firebase auto-scaling backend
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Run security tests (`npm run dev` and check console)
+4. Commit changes (`git commit -m 'Add amazing feature'`)
+5. Push to branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
+
+### Security Guidelines
+- Always run CSP tests before submitting
+- Update security documentation for new features
+- Follow input validation patterns
+- Test rate limiting with new endpoints
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+- **Documentation**: Check [SECURITY.md](./SECURITY.md) for security details
+- **Issues**: Report bugs via GitHub Issues
+- **Security**: Contact security team for vulnerability reports
+
+---
 
 ## Project Structure
 ```

@@ -1,56 +1,27 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import ReCaptchaProvider from "./components/common/ReCaptchaProvider";
 import Navbar from "./components/common/Navbar";
 import Home from "./pages/Home";
 import Report from "./pages/Report";
+import SponsorshipPage from "./pages/Sponsorship";
+import { SecurityUtils } from "./utils/securityUtils";
 import './App.css'
 
 function App() {
+
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/report" element={<Report/>} />
-      </Routes>
-    </Router>
+    <ReCaptchaProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/report" element={<Report/>} />
+          <Route path="/sponsorship" element={<SponsorshipPage/>} />
+        </Routes>
+      </Router>
+    </ReCaptchaProvider>
   );
 }
 
 export default App;
-
-
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
-
-// function App() {
-//   const [count, setCount] = useState(0)
-
-//   return (
-//     <>
-//       <div>
-//         <a href="https://vite.dev" target="_blank">
-//           <img src={viteLogo} className="logo" alt="Vite logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={reactLogo} className="logo react" alt="React logo" />
-//         </a>
-//       </div>
-//       <h1>Vite + React</h1>
-//       <div className="card">
-//         <button onClick={() => setCount((count) => count + 1)}>
-//           count is {count}
-//         </button>
-//         <p>
-//           Edit <code>src/App.jsx</code> and save to test HMR
-//         </p>
-//       </div>
-//       <p className="read-the-docs">
-//         Click on the Vite and React logos to learn more
-//       </p>
-//     </>
-//   )
-// }
-
-// export default App

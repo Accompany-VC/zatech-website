@@ -1,4 +1,6 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import './ReportForm.css';
 import { submitReport, REPORT_TYPES } from '../../services/reportService.js';
 import { SecurityUtils } from '../../utils/securityUtils.js';
 import { useReCaptcha } from '../common/ReCaptchaProvider.jsx';
@@ -11,6 +13,16 @@ function ReportForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState({ type: '', text: '' });
+
+  const descriptionRef = useRef(null);
+
+  // Auto-resize the description textarea vertically based on content
+  useEffect(() => {
+    const el = descriptionRef.current;
+    if (!el) return;
+    el.style.height = 'auto';
+    el.style.height = `${el.scrollHeight}px`;
+  }, [formData.description]);
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
@@ -77,7 +89,7 @@ function ReportForm() {
       }
     } catch (error) {
       setMessage({
-        type: 'error',
+        type: error,
         text: 'An unexpected error occurred. Please try again.'
       });
     } finally {
@@ -90,15 +102,18 @@ function ReportForm() {
       
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="report_type">Type of Report *</label>
+          <label htmlFor="report_type">Report Type</label>
           <select
             id="report_type"
             name="report_type"
             value={formData.report_type}
             onChange={handleChange}
             required
+            className="report-type-select"
           >
-            <option value="">Select a report type</option>
+            <option value="" disabled hidden>
+              Select a report type
+            </option>
             {Object.entries(REPORT_TYPES).map(([key, value]) => (
               <option key={key} value={value}>
                 {value.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
@@ -108,19 +123,21 @@ function ReportForm() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="description">Description *</label>
+          <label htmlFor="description">Description</label>
           <textarea
             id="description"
             name="description"
             value={formData.description}
             onChange={handleChange}
             placeholder="Please provide details about the incident. Be as specific as possible to help us investigate effectively."
-            rows={6}
+            rows={4}
             required
             maxLength={1000}
+            className="report-description"
+            ref={descriptionRef}
           />
           <small className="char-count">
-            {formData.description.length}/1000 characters
+            {formData.description.length}/1000
           </small>
         </div>
 
@@ -148,11 +165,11 @@ function ReportForm() {
       </form>
 
       <div className="privacy-notice">
-        <h3>Privacy Notice</h3>
         <p>
           This report is completely anonymous. We do not collect or store any personal information 
           that could identify you. Your IP address is not recorded.
         </p>
+        <a href="#" className="privacy-link">Privacy Notice</a>
       </div>
     </div>
   );

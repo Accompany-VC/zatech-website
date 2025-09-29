@@ -59,7 +59,7 @@ src/
 ├── config/             # Configuration files
 │   ├── firebase.js     # Firebase configuration
 │   ├── recaptcha.js    # reCAPTCHA configuration
-│   └── csp.js          # Content Security Policy setup
+│   └── csp.js          # Simple CSP configuration
 ├── pages/              # Page components
 │   ├── Home.jsx        # Landing page
 │   └── Report.jsx      # Report submission page
@@ -68,7 +68,7 @@ src/
 │   ├── authService.js      # Authentication
 │   └── firestoreService.js # Database operations
 ├── utils/              # Utility functions
-│   └── securityUtils.js    # Security validation & monitoring
+│   └── securityUtils.js    # Security validation
 └── constants/          # Application constants
 ```
 
@@ -160,9 +160,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Security**: Contact security team for vulnerability reports
 
 ---
-
-**Built with ❤️ for anonymous reporting and community safety** dev
-```
 
 ## Project Structure
 ```

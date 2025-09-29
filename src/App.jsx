@@ -9,10 +9,6 @@ import { SecurityUtils } from "./utils/securityUtils";
 import './App.css'
 
 function App() {
-  // Initialize security monitoring
-  useEffect(() => {
-    SecurityUtils.initCSPMonitoring();
-  }, []);
 
   return (
     <ReCaptchaProvider>

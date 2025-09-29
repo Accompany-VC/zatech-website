@@ -1,18 +1,17 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import { getStorage } from 'firebase/storage';
-// import { getDatabase } from 'firebase/database'; // Uncomment if using Realtime Database
-
+import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
 import { firebaseConfig } from './firebase.js';
 
-// Initialize Firebase
+// Initialize Firebase app
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firebase services
+// Initialize only Firestore (no auth needed for anonymous reports)
 export const db = getFirestore(app);
-export const auth = getAuth(app);
-export const storage = getStorage(app);
-// export const realtimeDb = getDatabase(app); // Uncomment if using Realtime Database
+
+// Connect to emulator in development (optional)
+if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+  // Uncomment next line to use Firestore emulator in development
+  // connectFirestoreEmulator(db, 'localhost', 8080);
+}
 
 export default app;

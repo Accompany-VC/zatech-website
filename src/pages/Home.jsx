@@ -51,7 +51,7 @@ export default function Home() {
            <h3>Events, Job-Posting and more</h3>
           We organize and share meetups, exchange knowledge about everything from tech to visas, and have active #jobpostings and #freelance-jobpostings channels for finding work</div>
           <div className="community-card"><h3>Some Things to Know Before Joining</h3>
-          By joining you agree to abide by the ZATech Code of Conduct. Please take a moment to read it and take special note we have specific rules about recruitement.
+          By joining you agree to abide by the ZATech Code of Conduct. Please take a moment to read it and take special note we have specific rules about recruitment.
 
           The group is intended to be high signal, low noise. Think of it as an overlapping series of professional groups rather than IRC in the 90s.
 

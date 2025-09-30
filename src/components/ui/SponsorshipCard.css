@@ -1,5 +1,5 @@
 .sponsorship-card {
-  background: #ffffff;
+  background: #fff;
   border: 1px solid #e8e8e8;
   border-radius: 12px;
   padding: 20px 16px;
@@ -14,7 +14,7 @@
 
 .sponsorship-card:hover {
   border-color: #d0d0d0;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 24px rgb(0 0 0 / 8%);
 }
 
 .accent-bar {
@@ -78,13 +78,13 @@
   height: 1px;
   width: 100%;
   background-color: #e5e7eb;
-  margin: 6px 0 8px 0;
+  margin: 6px 0 8px;
 }
 
 .benefits-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 20px 0;
+  margin: 0 0 20px;
   flex-grow: 1;
 }
 
@@ -127,11 +127,11 @@
 .sponsor-button:hover {
   background: #2a2a2a;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
 }
 
 /* Responsive text scaling for compact cards */
-@media (max-width: 1200px) {
+@media (width <= 1200px) {
   .tier-title {
     font-size: 1.2rem;
   }
@@ -141,7 +141,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .tier-title {
     font-size: 1.1rem;
   }
@@ -155,7 +155,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .tier-title {
     font-size: 1rem;
   }

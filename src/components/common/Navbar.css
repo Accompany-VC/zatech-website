@@ -1,39 +1,107 @@
 .navbar {
   width: 100%;
-  background: #fff;
-  color: black;
-  padding: 1rem 2rem;
+  background: var(--bg-light);
+  color: #333;
+  padding: 1rem 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
-  border-bottom: 1px solid #ddd;
+  border-bottom: none;
+  box-shadow: none;
 }
 
+.navbar-container {
+  max-width: var(--container-width);
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .navbar-logo {
-  margin: 0;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
+  color: #333;
+  text-decoration: none;
+  font-family: inherit;
+  transition: color 0.3s ease;
 }
 
+.navbar-logo:hover {
+  color: var(--brand-orange);
+}
 
 .navbar-links {
   display: flex;
   gap: 2rem;
+  align-items: center;
 }
 
-
 .nav-link {
-  color: black;
+  color: #666;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s ease;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  font-family: inherit;
+  position: relative;
 }
 
 .nav-link:hover {
-  color: #0077cc; 
+  color: var(--brand-orange);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--brand-orange);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.request-invite-btn {
+  background: var(--brand-blue);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.request-invite-btn:hover {
+  background: var(--brand-orange);
+  color: #1a1a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(246, 133, 4, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 16px;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .request-invite-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
 }

@@ -27,7 +27,9 @@ const buildPolicy = () => {
     "frame-src": [
       "https://www.google.com",
       "https://recaptcha.google.com",
-      "https://zatechdatabase.firebaseapp.com"
+      "https://zatechdatabase.firebaseapp.com",
+      "https://www.youtube.com",
+      "https://www.youtube-nocookie.com"
     ],
     "img-src": ["'self'", "data:", "https://www.gstatic.com"],
     "object-src": ["'none'"],

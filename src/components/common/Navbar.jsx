@@ -11,11 +11,10 @@ export default function Navbar() {
         <Link to="/faq" className="nav-link">FAQ</Link>
         <Link to="/wiki" className="nav-link">Wiki</Link>
         <Link to="/contact" className="nav-link">Contact</Link>
+        <Link to="/report" className="nav-link">Report</Link>
         <Link to="/sponsorship" className="nav-link">Sponsorship</Link>
         <Link to="/joinchannel" className="nav-link">Join</Link>
       </div>
     </nav>
   );
 }
-
-// Add <Link to="/sponsorship">Sponsorship</Link> to finished navbar

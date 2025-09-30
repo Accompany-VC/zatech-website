@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import './HeroSection.css';
 import MapSVG from '../../assets/images/South_Africa_blank_map.svg';

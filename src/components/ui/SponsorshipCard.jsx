@@ -1,4 +1,3 @@
-import React from "react";
 import "./SponsorshipCard.css";
 
 function SponsorshipCard({ icon, title, price, period, benefits, buttonText, accentColor }) {

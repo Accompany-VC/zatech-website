@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "./Home.css";
 import HeroSection from "../components/ui/HeroSection";
-import CommunityCard from "../components/ui/CommunityCard";
 import IconCard from "../components/ui/IconCard";
 import TextCard from "../components/ui/TextCard";
 import AboutSection from "../components/ui/AboutSection";

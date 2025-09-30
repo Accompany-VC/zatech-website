@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './ReportForm.css';
 import { submitReport, REPORT_TYPES } from '../../services/reportService.js';

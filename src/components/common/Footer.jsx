@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { Youtube, Linkedin } from "lucide-react";
 import "./Footer.css";

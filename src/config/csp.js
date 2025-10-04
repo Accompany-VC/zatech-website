@@ -1,5 +1,5 @@
 // 🛡️ Simple CSP Configuration
-// Only allows what we actually need: Firebase + reCAPTCHA
+// Only allows what we actually need: Firebase + reCAPTCHA + YouTube
 const buildPolicy = () => {
   const isDev = typeof import.meta !== 'undefined' && import.meta.env?.DEV;
   

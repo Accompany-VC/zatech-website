@@ -1,3 +1,9 @@
+.navbar-logo-hamburger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .navbar {
   width: 100%;
   background: var(--bg-light);
@@ -23,39 +29,29 @@
   align-items: center;
 }
 
-.navbar-logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #333;
-  text-decoration: none;
-  font-family: inherit;
-  transition: color 0.3s ease;
-}
-
-.navbar-logo:hover {
-  color: var(--brand-orange);
-}
-
+/* Desktop links */
 .navbar-links {
   display: flex;
   gap: 2rem;
   align-items: center;
+  position: static;
 }
+
+.navbar-logo { font-weight: 800; font-size: 1.5rem; color: #333; text-decoration: none; transition: color .3s ease; }
+.navbar-logo:hover { color: var(--brand-orange); }
 
 .nav-link {
   color: #666;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
+  font-weight: 600; /* bolder */
+  font-size: 1rem; /* larger */
   transition: color 0.3s ease;
-  font-family: inherit;
-  position: relative;
+  position: relative; /* for underline */
 }
 
-.nav-link:hover {
-  color: var(--brand-orange);
-}
+.nav-link:hover { color: var(--brand-orange); }
 
+/* Orange underline on hover */
 .nav-link::after {
   content: '';
   position: absolute;
@@ -67,9 +63,7 @@
   transition: width 0.3s ease;
 }
 
-.nav-link:hover::after {
-  width: 100%;
-}
+.nav-link:hover::after { width: 100%; }
 
 .request-invite-btn {
   background: var(--brand-blue);
@@ -92,16 +86,29 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .navbar-container {
-    padding: 0 16px;
-  }
+  .navbar-container { padding: 0 16px; }
+
+  .navbar-logo { cursor: pointer; font-size: 1.5rem; font-weight: 700; color: #333; text-decoration: none; font-family: inherit; transition: color 0.3s ease; }
 
   .navbar-links {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    background: var(--bg-light);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    z-index: 1099;
+    gap: 1.25rem;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
   }
+  .navbar-links.open { display: flex; }
 
-  .request-invite-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-  }
+  .nav-link { font-size: 1.1rem; width: 100%; padding: 0.5rem 0; }
+
+  .request-invite-btn { padding: 0.5rem 1rem; font-size: 0.8rem; margin-left: 8px; }
 }

@@ -5,8 +5,8 @@ import IconCard from "../components/ui/IconCard";
 import TextCard from "../components/ui/TextCard";
 import AboutSection from "../components/ui/AboutSection";
 import FAQSection from "../components/ui/FAQSection";
-import WhyJoinImage from "../assets/images/why-join.png"; 
-import EventsImage from "../assets/images/events.jpg";
+import WhyJoinImage from "../assets/images/why-join.optimized.jpg"; 
+import EventsImage from "../assets/images/events.optimized.jpg";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -42,7 +42,7 @@ export default function Home() {
         <div className="community-grid-new">
           {/* Card 1: Why Join (spans rows 1-2) */}
           <div className="community-card-large card-1">
-            <img src={WhyJoinImage} alt="Why Join" className="card-large-image" />
+            <img src={WhyJoinImage} alt="Why Join" className="card-large-image" loading="lazy" width="1200" height="900" />
             <div className="card-large-content">
               <h3>Why Join?</h3>
               <p>
@@ -75,7 +75,7 @@ export default function Home() {
 
           {/* Card 4: Events and Jobs */}
           <div className="community-card-large card-4">
-            <img src={EventsImage} alt="Events and Jobs" className="card-large-image" />
+            <img src={EventsImage} alt="Events and Jobs" className="card-large-image" loading="lazy" width="1600" height="828" />
             <div className="card-large-content">
               <h3>Events, Job Postings, and More</h3>
               <p>

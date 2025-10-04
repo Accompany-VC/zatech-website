@@ -5,7 +5,8 @@ import IconCard from "../components/ui/IconCard";
 import TextCard from "../components/ui/TextCard";
 import AboutSection from "../components/ui/AboutSection";
 import FAQSection from "../components/ui/FAQSection";
-import WhyJoinImage from "../assets/images/why-join.optimized.jpg"; 
+import InviteEmailSection from "../components/ui/InviteEmailSection";
+import WhyJoinImage from "../assets/images/why-join.optimized.jpg";
 import EventsImage from "../assets/images/events.optimized.jpg";
 
 import { useLocation, useNavigate } from "react-router-dom";
@@ -112,6 +113,8 @@ Finally, please include a link to your LinkedIn, Twitter, GitHub, or another sit
           </div>
         </div>
       </section>
+
+      <InviteEmailSection />
 
       <AboutSection />
       <FAQSection />

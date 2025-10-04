@@ -84,10 +84,10 @@ export default function Navbar({ className }) {
           <a href="https://zatech.co.za/coc" target="_blank" rel="noreferrer" className="nav-link" onClick={handleNavClick()}>Code of Conduct</a>
         </div>
 
-        <a 
-          href="mailto:invite@zatech.co.za" 
+        <a
+          href="#invite-email"
           className="request-invite-btn"
-          onClick={() => setMenuOpen(false)}
+          onClick={handleSectionNav("invite-email")}
         >
           Request Invite →
         </a>

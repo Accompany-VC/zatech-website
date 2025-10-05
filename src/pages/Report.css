@@ -1,7 +1,7 @@
 .report-page {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 20px 40px;
+  padding: 6rem 40px 20px;
   background-color: var(--bg-light);
   color: var(--text-primary);
 }
@@ -29,7 +29,7 @@
 }
 
 @media (max-width: 768px) {
-  .report-page { padding: 20px; }
+  .report-page { padding: 4rem 20px 20px; }
   .report-header h1 { font-size: 2rem; }
 }
 

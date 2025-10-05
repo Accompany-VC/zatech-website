@@ -194,7 +194,7 @@ function InviteEmailSection({ className }) {
   const [typedSample, setTypedSample] = useState(() => createTypedState(emailSamples[0], 1));
   const [isTyping, setIsTyping] = useState(false);
 
-  const fieldMinWidths = useMemo(() => {
+  const _fieldMinWidths = useMemo(() => {
     const map = {};
     fieldsToType.forEach((field) => {
       map[field] = Math.max(

@@ -1,0 +1,15 @@
+# Browser support: Safari, Chrome, Firefox + Mobile
+# Focus on popular browsers as requested
+
+# Desktop browsers
+chrome >= 88
+firefox >= 85  
+safari >= 14
+
+# Mobile browsers  
+ios_saf >= 14
+android >= 88
+
+# Exclude unsupported browsers
+not IE 11
+not op_mini all

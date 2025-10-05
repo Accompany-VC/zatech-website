@@ -80,6 +80,7 @@ export default function Navbar({ className }) {
           <Link to="/report" className="nav-link" onClick={handleNavClick()}>Report</Link>
           <a href="#about" className="nav-link" onClick={handleSectionNav("about")}>About</a>
           <a href="#faqs" className="nav-link" onClick={handleSectionNav("faqs")}>FAQ</a>
+          <a href="#invite-email" className="nav-link" onClick={handleSectionNav("invite-email")}>Invite</a>
           <a href="https://wiki.zatech.co.za" target="_blank" rel="noreferrer" className="nav-link" onClick={handleNavClick()}>Wiki</a>
           <a href="https://zatech.co.za/coc" target="_blank" rel="noreferrer" className="nav-link" onClick={handleNavClick()}>Code of Conduct</a>
         </div>

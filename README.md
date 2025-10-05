@@ -1,16 +1,15 @@
-## After clone
-```
-npm install# ZATech Anonymous Reporting System
+# ZATech - South Africa's Largest Tech Community
 
-A secure, anonymous reporting platform built with React and Firebase, featuring enterprise-grade security measures.
+A modern, responsive community platform built with React 19 and Vite, featuring comprehensive testing, cross-browser compatibility, and enterprise-grade security.
 
-## 🛡️ Security Features
+## ✨ Features
 
-- **Content Security Policy (CSP)**: Browser-level protection against XSS attacks
-- **Input Sanitization**: DOMPurify integration with custom validation
-- **Rate Limiting**: Advanced abuse prevention with progressive delays
-- **Bot Protection**: Google reCAPTCHA v3 with score-based validation
-- **Real-time Monitoring**: CSP violation tracking and security alerts
+- 🌐 **Responsive Design** - Mobile-first with hamburger navigation
+- 🧪 **Comprehensive Testing** - 37 unit tests + 65 E2E tests across browsers
+- 🛡️ **Enterprise Security** - CSP, input sanitization, rate limiting, reCAPTCHA
+- 📱 **Cross-Browser Support** - Chrome, Firefox, Safari (desktop + mobile)
+- ⚡ **Modern Stack** - React 19, Vite, Firebase, Playwright
+- 🎯 **Production Ready** - Zero lint errors, security audits, performance optimized
 
 ## 🚀 Quick Start
 
@@ -23,7 +22,7 @@ A secure, anonymous reporting platform built with React and Firebase, featuring 
 ### Installation
 ```bash
 # Clone the repository
-git clone [your-repo-url]
+git clone https://github.com/Accompany-VC/zatech-website.git
 cd zatech-website
 
 # Install dependencies
@@ -49,30 +48,54 @@ VITE_FIREBASE_APP_ID=1:123456789:web:abcdef
 VITE_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
 ```
 
-## 📁 Project Structure
+## 🏗️ Project Structure
 
 ```
-src/
-├── components/          # Reusable UI components
-│   ├── common/         # Shared components (Navbar, etc.)
-│   └── forms/          # Form-specific components
-├── config/             # Configuration files
-│   ├── firebase.js     # Firebase configuration
-│   ├── recaptcha.js    # reCAPTCHA configuration
-│   └── csp.js          # Simple CSP configuration
-├── pages/              # Page components
-│   ├── Home.jsx        # Landing page
-│   └── Report.jsx      # Report submission page
-├── services/           # Business logic layer
-│   ├── reportService.js    # Report handling
-│   ├── authService.js      # Authentication
-│   └── firestoreService.js # Database operations
-├── utils/              # Utility functions
-│   └── securityUtils.js    # Security validation
-└── constants/          # Application constants
+zatech-website/
+├── public/                       # Static assets served directly
+├── src/                          # All source code
+│   ├── components/               # Reusable UI components
+│   │   ├── common/               # Shared components (Navbar, ErrorBoundary)
+│   │   ├── forms/                # Form components (ReportForm)
+│   │   └── ui/                   # UI elements (HeroSection, Cards, InviteEmailSection)
+│   ├── pages/                    # Main page components (Home, Report)
+│   ├── services/                 # Firebase and external API calls
+│   ├── utils/                    # Helper functions and security utilities
+│   ├── config/                   # Configuration files and constants
+│   ├── assets/                   # Images, fonts, and other static files
+│   └── test/                     # Test setup and utilities
+├── tests/                        # End-to-end tests
+│   └── e2e/                     # Playwright browser tests
+├── .browserslistrc              # Browser compatibility targets
+├── .env.example                 # Template for environment variables
+├── .gitignore                   # Files to ignore in Git
+├── eslint.config.js             # ESLint configuration
+├── package.json                 # Dependencies and scripts
+├── playwright.config.js         # Cross-browser testing config
+├── vite.config.js               # Vite configuration
+└── README.md                    # This file
 ```
 
 ## 🔧 Development
+
+### Available Scripts
+```bash
+# Development
+npm run dev              # Start dev server with hot reload
+npm run dev -- --host 0.0.0.0  # Start dev server accessible from phone
+
+# Building
+npm run build           # Build optimized production bundle
+npm run preview         # Preview production build locally
+
+# Testing
+npm run test:run        # Run unit tests (Vitest)
+npm run test:e2e        # Run cross-browser E2E tests (Playwright)
+
+# Code Quality
+npm run lint            # Run ESLint for code quality
+npm audit              # Check for security vulnerabilities
+```
 
 ### Security Testing
 ```bash
@@ -85,115 +108,125 @@ npm run dev
 # - Rate limiting status
 ```
 
-### Building for Production
-```bash
-# Build optimized production bundle
-npm run build
+## 🧪 Testing Cheat Sheet
 
-# Preview production build
-npm run preview
+### Quick Test Commands
+```bash
+# 🚀 FULL TEST SUITE (Run this before commits)
+npm run test:run && npm run test:e2e && npm run lint && npm audit
+
+# 🏃‍♂️ QUICK DEV CHECKS (During development)
+npm run test:run    # Unit tests only (fast ~1-2 seconds)
+npm run lint        # Code quality check (~1 second)
+npm run dev         # Start dev server
+
+# 🌐 CROSS-BROWSER TESTING (Before releases)
+npm run test:e2e    # Full browser compatibility (~10-30 seconds)
+
+# 🔒 SECURITY CHECK
+npm audit           # Check for vulnerabilities
 ```
 
-## 🛡️ Security Implementation
+### When to Run What
+| **When You...** | **Run This** | **Why** |
+|-----------------|--------------|---------|
+| **Add new component** | `npm run test:run` | Verify existing tests still pass |
+| **Change existing code** | `npm run test:run` | Check for regressions |
+| **Add new CSS/styles** | `npm run lint` | Catch style issues early |
+| **Before committing** | Full test suite ⬆️ | Ensure nothing is broken |
+| **Add new dependencies** | `npm audit` | Security check |
+| **Test mobile/responsive** | `npm run dev -- --host 0.0.0.0` | Test on phone |
+| **Before deployment** | `npm run test:e2e` | Cross-browser verification |
 
-Our security approach uses multiple layers:
+### Test-Driven Development Workflow
+```bash
+# 1. Start development
+npm run dev
 
-1. **Browser Level**: Content Security Policy prevents unauthorized resource loading
-2. **Application Level**: Input sanitization and validation prevent injection attacks
-3. **Service Level**: Rate limiting prevents abuse and spam
-4. **User Level**: reCAPTCHA distinguishes humans from bots
-5. **Data Level**: Firebase security rules protect data access
+# 2. Make your changes
+# ... edit code ...
 
-For detailed security information, see [SECURITY.md](./SECURITY.md).
+# 3. Quick feedback loop (run frequently)
+npm run test:run
 
-## 📊 Features
+# 4. Check code quality
+npm run lint
 
-### Anonymous Reporting
-- **Secure Submission**: End-to-end encrypted report transmission
-- **Input Validation**: Real-time content sanitization
-- **Rate Limiting**: Prevents spam while allowing legitimate reports
-- **Bot Protection**: Invisible reCAPTCHA validation
+# 5. Before committing (the big check)
+npm run test:run && npm run test:e2e && npm run lint && npm audit
+```
 
-### Security Monitoring
-- **CSP Violations**: Real-time browser security monitoring
-- **Abuse Detection**: Automated rate limiting enforcement
-- **Development Tools**: Security testing utilities
+### Mobile Testing
+```bash
+# Start server for phone testing
+npm run dev -- --host 0.0.0.0
 
-## 🎯 Best Practices Followed
+# Then visit on your phone: http://YOUR_IP:5173/
+# (Check terminal output for exact IP address)
+```
 
-- ✅ **Defense in Depth**: Multiple security layers
-- ✅ **Principle of Least Privilege**: Minimal resource permissions
-- ✅ **Input Validation**: Client and server-side validation
-- ✅ **Secure Configuration**: Environment-based secrets
-- ✅ **Real-time Monitoring**: Security violation tracking
+## 🛡️ Security & Quality
 
-## 📈 Performance
+### Security Features
+- **Content Security Policy (CSP)**: Browser-level protection against XSS attacks
+- **Input Sanitization**: DOMPurify integration with custom validation
+- **Rate Limiting**: Advanced abuse prevention with progressive delays
+- **Bot Protection**: Google reCAPTCHA v3 with score-based validation
+- **Real-time Monitoring**: CSP violation tracking and security alerts
 
-- **Bundle Size**: Optimized with Vite tree-shaking
-- **Load Time**: Fast initial page load with code splitting
-- **Security Overhead**: Minimal impact on user experience
-- **Scalability**: Firebase auto-scaling backend
+### Quality Assurance
+- **37 Unit Tests** - Component logic and utility functions
+- **65 E2E Tests** - Cross-browser compatibility (Chrome, Firefox, Safari)
+- **Mobile Testing** - Responsive design verification
+- **Code Quality** - ESLint with zero errors
+- **Security Audits** - Automated dependency vulnerability scanning
+
+### Browser Support
+Configured via `.browserslistrc`:
+- Chrome 88+, Firefox 85+, Safari 14+
+- iOS Safari 14+, Android Chrome 88+
+- Modern JavaScript features with graceful degradation
 
 ## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Run security tests (`npm run dev` and check console)
-4. Commit changes (`git commit -m 'Add amazing feature'`)
-5. Push to branch (`git push origin feature/amazing-feature`)
-6. Open a Pull Request
+3. Follow the testing workflow (see Testing Cheat Sheet above)
+4. Ensure all tests pass and code quality checks pass
+5. Commit changes (`git commit -m 'Add amazing feature'`)
+6. Push to branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
 
-### Security Guidelines
-- Always run CSP tests before submitting
-- Update security documentation for new features
-- Follow input validation patterns
-- Test rate limiting with new endpoints
+### Development Guidelines
+- Follow React best practices and component patterns
+- Maintain test coverage for new features
+- Run the full test suite before committing
+- Update documentation for significant changes
+- Follow security patterns established in the codebase
+
+## 🏆 Technical Achievements
+
+This project demonstrates production-grade development practices:
+
+- ✅ **Modern React Architecture** - Hooks, components, routing
+- ✅ **Comprehensive Testing** - Unit, integration, E2E, cross-browser
+- ✅ **Security First** - Multiple layers of protection
+- ✅ **Performance Optimized** - Fast builds, optimized bundles
+- ✅ **Mobile Ready** - Responsive design, touch-friendly
+- ✅ **Developer Experience** - Hot reload, linting, type safety
+- ✅ **Production Ready** - Build optimization, error handling
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
+## 🆘 Support & Resources
 
-- **Documentation**: Check [SECURITY.md](./SECURITY.md) for security details
-- **Issues**: Report bugs via GitHub Issues
-- **Security**: Contact security team for vulnerability reports
+- **Documentation**: This README covers all major aspects
+- **Issues**: Report bugs via [GitHub Issues](https://github.com/Accompany-VC/zatech-website/issues)
+- **Testing Guide**: See Testing Cheat Sheet section above
+- **Security**: Follow established patterns in `src/utils/securityUtils.js`
 
 ---
 
-## Project Structure
-```
-zatech-website/
-├── public/                       # Static assets served directly
-├── src/                          # All source code
-│   ├── components/               # Reusable UI components
-│   │   ├── common/               # Shared components (Header, Footer, Navigation)
-│   │   ├── forms/                # Form components (ContactForm, ReportForm)
-│   │   └── ui/                   # Basic UI elements (Button, Card, Modal)
-│   ├── pages/                    # Main page components (Home, About, Contact)
-│   ├── services/                 # Firebase and external API calls
-│   ├── utils/                    # Helper functions and utilities
-│   ├── hooks/                    # Custom React hooks
-│   ├── styles/                   # CSS files and styling
-│   ├── config/                   # Configuration files and constants
-│   └── assets/                   # Images, fonts, and other static files
-├── .env                          # Environment variables (DO NOT COMMIT)
-├── .env.example                  # Template for environment variables
-├── .gitignore                    # Files to ignore in Git
-├── package.json                  # Dependencies and scripts
-├── vite.config.js                # Vite configuration
-└── README.md                     # This file
-```
-
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Built with ❤️ for the South African tech community

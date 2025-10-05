@@ -3,6 +3,8 @@
   border: 1px solid #e8e8e8;
   border-radius: 16px;
   padding: 28px 24px;
+  max-width: 750px;
+  margin: 0 auto;
 }
 
 .report-form h2 {
@@ -55,7 +57,9 @@
 .message.success { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
 .message.error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
 .field-error { margin-top: 6px; color: #b91c1c; font-size: 0.9rem; }
-.submit-btn { padding: 18px 26px; background: #1a1a1a; color: #fff; border: none; border-radius: 12px; font-size: 1.2rem; font-weight: 600; cursor: pointer; }
+.submit-btn { 
+  padding: 18px 26px; background: #1a1a1a; color: #fff; border: none; border-radius: 12px; font-size: 1.2rem; font-weight: 600; cursor: pointer; display: block; margin: 0 auto;
+}
 .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
 .privacy-notice { margin-top: 20px; text-align: center; }

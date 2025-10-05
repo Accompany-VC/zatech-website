@@ -30,7 +30,7 @@ export const submitReport = async (reportData, recaptchaToken = null) => {
     });
     
     return { success: true, id: docRef.id };
-  } catch (error) {
+  } catch {
     return { success: false, error: 'Failed to submit report. Please try again.' };
   }
 };

@@ -1,39 +1,114 @@
+.navbar-logo-hamburger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .navbar {
   width: 100%;
-  background: #fff;
-  color: black;
-  padding: 1rem 2rem;
+  background: var(--bg-light);
+  color: #333;
+  padding: 1rem 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
-  border-bottom: 1px solid #ddd;
+  border-bottom: none;
+  box-shadow: none;
 }
 
-
-.navbar-logo {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: bold;
+.navbar-container {
+  max-width: var(--container-width);
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-
+/* Desktop links */
 .navbar-links {
   display: flex;
   gap: 2rem;
+  align-items: center;
+  position: static;
 }
 
+.navbar-logo { font-weight: 800; font-size: 1.5rem; color: #333; text-decoration: none; transition: color .3s ease; }
+.navbar-logo:hover { color: var(--brand-orange); }
 
 .nav-link {
-  color: black;
+  color: #666;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  font-weight: 600; /* bolder */
+  font-size: 1rem; /* larger */
+  transition: color 0.3s ease;
+  position: relative; /* for underline */
 }
 
-.nav-link:hover {
-  color: #0077cc; 
+.nav-link:hover { color: var(--brand-orange); }
+
+/* Orange underline on hover */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--brand-orange);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after { width: 100%; }
+
+.request-invite-btn {
+  background: var(--brand-blue);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.request-invite-btn:hover {
+  background: var(--brand-orange);
+  color: #1a1a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(246, 133, 4, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-container { padding: 0 16px; }
+
+  .navbar-logo { cursor: pointer; font-size: 1.5rem; font-weight: 700; color: #333; text-decoration: none; font-family: inherit; transition: color 0.3s ease; }
+
+  .navbar-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    background: var(--bg-light);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    z-index: 1099;
+    gap: 1.25rem;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+  .navbar-links.open { display: flex; }
+
+  .nav-link { font-size: 1.1rem; width: 100%; padding: 0.5rem 0; }
+
+  .request-invite-btn { padding: 0.5rem 1rem; font-size: 0.8rem; margin-left: 8px; }
 }

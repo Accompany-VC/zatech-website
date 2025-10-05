@@ -1,11 +1,11 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { useState, useCallback, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import './ReportForm.css';
 import { submitReport, REPORT_TYPES } from '../../services/reportService.js';
 import { SecurityUtils } from '../../utils/securityUtils.js';
-import { useReCaptcha } from '../common/ReCaptchaProvider.jsx';
+import { useReCaptcha } from '../common/ReCaptchaContext.js';
 
-function ReportForm() {
+function ReportForm({ className }) {
   const { executeRecaptcha, recaptchaLoaded } = useReCaptcha();
   const [formData, setFormData] = useState({
     report_type: '',
@@ -49,7 +49,7 @@ function ReportForm() {
       if (recaptchaLoaded) {
         try {
           recaptchaToken = await executeRecaptcha('submit_report');
-        } catch (error) {
+        } catch {
           setMessage({
             type: 'error',
             text: 'Bot protection verification failed. Please try again.'
@@ -87,9 +87,9 @@ function ReportForm() {
           text: result.error || 'An error occurred while submitting your report. Please try again.'
         });
       }
-    } catch (error) {
+    } catch {
       setMessage({
-        type: error,
+        type: 'error',
         text: 'An unexpected error occurred. Please try again.'
       });
     } finally {
@@ -98,7 +98,7 @@ function ReportForm() {
   }, [formData, isSubmitting, recaptchaLoaded, executeRecaptcha]);
 
   return (
-    <div className="report-form">
+    <div className={`report-form ${className || ''}`.trim()}>
       
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -174,5 +174,9 @@ function ReportForm() {
     </div>
   );
 }
+
+ReportForm.propTypes = {
+  className: PropTypes.string,
+};
 
 export default ReportForm;

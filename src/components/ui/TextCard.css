@@ -1,0 +1,50 @@
+/* Text Card Styles */
+.text-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border: 1px solid #e2e8f0;
+}
+
+.text-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgb(0 0 0 / 10%);
+}
+
+.text-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.text-card-content {
+  color: #4a5568;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.text-card-content p {
+  margin-bottom: 1rem;
+}
+
+.text-card-content p:last-child {
+  margin-bottom: 0;
+}
+
+.text-highlight {
+  color: #F68504;
+  font-weight: 600;
+}
+
+/* Grid positioning */
+.grid-area-span-2 {
+  grid-column: span 2;
+}
+
+.grid-area-large {
+  grid-row: span 2;
+}

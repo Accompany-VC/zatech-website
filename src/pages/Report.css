@@ -1,12 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
-
 .report-page {
   max-width: 1400px;
   margin: 0 auto;
   padding: 20px 40px;
-  padding-top: 88px; /* offset for fixed navbar */
-  min-height: calc(100vh - 88px); /* fit viewport below navbar */
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-primary);
 }
 
 .report-header {
@@ -17,7 +14,7 @@
 .report-header h1 {
   font-size: 3rem;
   margin-bottom: 16px;
-  color: #1a1a1a;
+  color: var(--text-strong);
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.1;
@@ -25,7 +22,7 @@
 
 .report-header .subtitle {
   font-size: 1.25rem;
-  color: #6b7280;
+  color: var(--text-muted);
   font-weight: 400;
   line-height: 1.4;
   margin: 0;

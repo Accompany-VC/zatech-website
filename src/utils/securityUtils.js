@@ -19,18 +19,22 @@ export class SecurityUtils {
     const errors = [];
     const safeData = data || {};
 
-    // Sanitize inputs
+    // Get raw data for validation (before sanitization)
+    const rawReportType = safeData.report_type || '';
+    const rawDescription = safeData.description || '';
+
+    // Sanitize inputs for return
     const sanitizedData = {
-      report_type: this.sanitizeInput(safeData.report_type || ''),
-      description: this.sanitizeInput(safeData.description || '')
+      report_type: this.sanitizeInput(rawReportType),
+      description: this.sanitizeInput(rawDescription)
     };
 
-    // Basic validation
-    if (!sanitizedData.report_type || !Object.values(REPORT_TYPES).includes(sanitizedData.report_type)) {
+    // Basic validation on raw data
+    if (!rawReportType.trim() || !Object.values(REPORT_TYPES).includes(rawReportType.trim())) {
       errors.push('Please select a valid report type');
     }
 
-    const desc = sanitizedData.description;
+    const desc = rawDescription.trim();
     if (desc.length < 10) {
       errors.push('Description must be at least 10 characters');
     }

@@ -1,0 +1,79 @@
+/* Icon Card Styles */
+.icon-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: fit-content;
+}
+
+.icon-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.icon-container {
+  width: 56px;
+  height: 56px;
+  background: #f8f9fa;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.icon-card:hover .icon-container {
+  background: #f1f3f5;
+  border-color: #d1d5db;
+}
+
+.icon-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+ .icon-card-content {
+  color: #666;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.icon-card-button {
+  background: #F68504;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  box-shadow: 0 2px 8px rgba(246, 133, 4, 0.25);
+}
+
+.icon-card-button:hover {
+  background: #FF9518;
+  color: #1a1a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(246, 133, 4, 0.4);
+}
+
+.icon-card-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(246, 133, 4, 0.3);
+}

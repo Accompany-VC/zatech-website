@@ -1,4 +1,3 @@
-import React from 'react';
 import SponsorshipCard from '../components/ui/SponsorshipCard';
 import './Sponsorship.css';
 

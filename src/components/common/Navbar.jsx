@@ -77,18 +77,9 @@ export default function Navbar({ className }) {
           >
             Home
           </Link>
-          <Link to="/report" className="nav-link" onClick={handleNavClick()}>
-            Report
-          </Link>
           <Link to="/sponsorship" className="nav-link" onClick={handleNavClick()}>
             Sponsorship
           </Link>
-          <a href="#about" className="nav-link" onClick={handleSectionNav("about")}>
-            About
-          </a>
-          <a href="#faqs" className="nav-link" onClick={handleSectionNav("faqs")}>
-            FAQ
-          </a>
           <a 
             href="https://wiki.zatech.co.za" 
             target="_blank" 

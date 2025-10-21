@@ -60,6 +60,6 @@
 
 .recaptcha-status {
   margin-top: 0.5rem;
-  color: #666;
+  color: var(--text-muted);
   font-size: 0.875rem;
 }

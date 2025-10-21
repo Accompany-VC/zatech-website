@@ -90,6 +90,7 @@
   font-size: 0.875rem;
   color: #aaa;
   width: 100%;
+  min-height: 120px;
 }
 
 .footer-bottom-links { 

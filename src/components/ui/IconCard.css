@@ -40,13 +40,13 @@
 .icon-card-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text-strong);
   margin-bottom: 12px;
   line-height: 1.2;
 }
 
  .icon-card-content {
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.6;
   font-size: 1rem;
   margin-bottom: 1rem;
@@ -55,7 +55,7 @@
 
 .icon-card-button {
   background: #F68504;
-  color: white;
+  color: var(--text-strong);
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   text-decoration: none;

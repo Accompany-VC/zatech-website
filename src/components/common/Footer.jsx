@@ -60,10 +60,10 @@ function Footer({ className }) {
       {/* Bottom Row */}
       <div className="footer-bottom">
         <p>© 2025 ZATech. All rights reserved.</p>
-        <div className="footer-bottom-links">
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#terms">Terms of Service</a>
-          <a href="#cookies">Cookies Settings</a>
+        <div className="footer-bottom-links" aria-label="Supplemental links">
+          <a href="/privacy" aria-current="false">Privacy Policy</a>
+          <a href="/terms" aria-current="false">Terms of Service</a>
+          <a href="/cookies" aria-current="false">Cookies Settings</a>
         </div>
       </div>
     </footer>

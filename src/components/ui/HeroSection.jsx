@@ -30,8 +30,17 @@ function HeroSection({ className }) {
             Join Our Slack Community →
           </a>
         </div>
-        <div className="hero-map">
-          <img src={MapSVG} alt="South Africa Map" className="map-svg" loading="lazy" />
+        <div className="hero-map" aria-hidden="true">
+          <img
+            src={MapSVG}
+            alt=""
+            className="map-svg"
+            width="640"
+            height="640"
+            decoding="async"
+            fetchpriority="high"
+            loading="eager"
+          />
         </div>
       </div>
     </section>

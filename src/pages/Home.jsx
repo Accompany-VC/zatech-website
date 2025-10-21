@@ -9,7 +9,9 @@ import AboutSection from "../components/ui/AboutSection";
 import FAQSection from "../components/ui/FAQSection";
 import InviteEmailSection from "../components/ui/InviteEmailSection";
 import WhyJoinImage from "../assets/images/why-join.optimized.jpg";
+import WhyJoinImageSmall from "../assets/images/why-join.640w.jpg";
 import EventsImage from "../assets/images/events.optimized.jpg";
+import EventsImageSmall from "../assets/images/events.700w.jpg";
 import scrollSectionIntoView from "../utils/scrollToSection";
 
 import { useLocation, useNavigate } from "react-router-dom";
@@ -41,7 +43,7 @@ export default function Home() {
       {/* Community Section */}
       <section className="community-section">
         <div className="community-section-header">
-          <h1>Join Our Community</h1>
+          <h2>Join Our Community</h2>
           <p>Connect, collaborate, and grow with thousands of tech professionals in South Africa.</p>
         </div>
         
@@ -49,12 +51,15 @@ export default function Home() {
           {/* Card 1: Why Join (spans rows 1-2) */}
           <div className="community-card-large card-1">
             <img 
-              src={WhyJoinImage} 
+              src={WhyJoinImageSmall}
+              srcSet={`${WhyJoinImageSmall} 640w, ${WhyJoinImage} 1200w`} 
+              sizes="(max-width: 768px) 100vw, 50vw"
               alt="Why Join" 
               className="card-large-image" 
               loading="lazy" 
-              width="1200" 
-              height="900" 
+              decoding="async"
+              width="640" 
+              height="480" 
             />
             <div className="card-large-content">
               <h3>Why Join?</h3>
@@ -89,12 +94,15 @@ export default function Home() {
           {/* Card 4: Events and Jobs */}
           <div className="community-card-large card-4">
             <img 
-              src={EventsImage} 
+              src={EventsImageSmall}
+              srcSet={`${EventsImageSmall} 700w, ${EventsImage} 1600w`} 
+              sizes="(max-width: 768px) 100vw, 50vw"
               alt="Events and Jobs" 
               className="card-large-image" 
               loading="lazy" 
-              width="1600" 
-              height="828" 
+              decoding="async"
+              width="700" 
+              height="362" 
             />
             <div className="card-large-content">
               <h3>Events, Job Postings, and More</h3>

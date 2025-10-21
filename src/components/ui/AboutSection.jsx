@@ -14,6 +14,8 @@ function AboutSection({ className }) {
           src="https://www.youtube.com/embed/Ze_C-Fwz_Ec"
           title="ZATech Video"
           frameBorder="0"
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
         ></iframe>
         <a

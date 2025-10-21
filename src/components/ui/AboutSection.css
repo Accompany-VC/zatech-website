@@ -15,7 +15,7 @@
 }
 
 .about-section > p {
-  color: #4a5568;
+  color: var(--text-muted);
   font-size: clamp(1rem, 2.5vw, 1.125rem);
   margin-bottom: 3rem;
   max-width: 600px;
@@ -42,15 +42,15 @@
 }
 
 .youtube-link {
-  color: #F68504;
-  text-decoration: none;
+  color: var(--brand-orange-dark);
+  text-decoration: underline;
   font-weight: 600;
   font-size: 1.1rem;
   transition: color 0.3s ease;
 }
 
 .youtube-link:hover {
-  color: #e07603;
+  color: #923b07;
 }
 
 .about-card {
@@ -73,13 +73,13 @@
 .about-card h3 {
   font-size: clamp(1.25rem, 3vw, 1.5rem);
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-strong);
   margin-bottom: 1.5rem;
   line-height: 1.2;
 }
 
 .about-card p {
-  color: #4a5568;
+  color: var(--text-muted);
   line-height: 1.6;
   font-size: 0.95rem;
   margin-bottom: 1rem;
